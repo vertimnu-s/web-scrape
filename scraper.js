@@ -7,6 +7,7 @@ import sound from "sound-play";
 
 const MAX_TIMEOUT = 5;
 
+
 //CSS selectors for Udemy website elements, in order
 const SELECTORS = [
     "div.course-landing-page__main-content > div > h1",//Course title
@@ -100,6 +101,7 @@ puppeteer.launch({
                 }
             }))
             //Get the hours and minutes separately
+            //TODO: for courses of 1 hour or less, this returns NaN. maybe use something other than mathfloor, or check if it has some flattening option
             const courseLength = Number(contents[1].replace(" hours on-demand video", ""))
             const hours = Math.floor(courseLength)
             const minutes = Math.floor(courseLength % 1 * 60)
