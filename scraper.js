@@ -132,10 +132,10 @@ puppeteer.launch({
             //We manually owerwrite the clipboardEmitter's last checked value, preventing it from firing a "copy" event
             clipboardEmitter.setNewContent(contentsNormalized);
             //Copy processed data into clipboard and play a short success sound
-            sound.play("C:/Windows/Media/ding-sound.mp3");
+            sound.play("./sounds/ding-sound.mp3");
             console.log(contentsNormalized);
         } catch (er) {
-            sound.play("C:/Windows/Media/chord.wav");
+            sound.play("./sounds/chord.wav");
             console.error(`Couldn't scrape data from ${data}: ${er}`);
         }
     })
