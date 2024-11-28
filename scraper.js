@@ -7,7 +7,7 @@ import sound from "sound-play";
 
 const MAX_TIMEOUT = 5;
 
-
+//TODO: Fix sound-play not working with relative path
 //CSS selectors for Udemy website elements, in order
 const SELECTORS = [
     "div.course-landing-page__main-content > div > h1",//Course title
@@ -132,10 +132,10 @@ puppeteer.launch({
             //We manually owerwrite the clipboardEmitter's last checked value, preventing it from firing a "copy" event
             clipboardEmitter.setNewContent(contentsNormalized);
             //Copy processed data into clipboard and play a short success sound
-            sound.play("./sounds/ding-sound.mp3");
+            sound.play("C://Windows/Media/ding-sound.mp3");
             console.log(contentsNormalized);
         } catch (er) {
-            sound.play("./sounds/chord.wav");
+            sound.play("C://Windows/Media/chord.wav");
             console.error(`Couldn't scrape data from ${data}: ${er}`);
         }
     })
