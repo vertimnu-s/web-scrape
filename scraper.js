@@ -17,10 +17,10 @@ const SELECTORS = [
     "div.clp-lead__element-item.clp-lead__element-item--row > a > span:nth-child(2)",//Num of ratings
     ".enrollment",//Num of students
     "div.clp-lead__element-meta > div:nth-child(1) > div > span",//Last updated
-    ".instructor--instructor__image-and-stats--6Nbsa > .ud-unstyled-list > li:nth-child(1) > div > div",//Instructor Rating
-    ".instructor--instructor__image-and-stats--6Nbsa > .ud-unstyled-list > li:nth-child(2) > div > div",//Instructor Reviews
-    ".instructor--instructor__image-and-stats--6Nbsa > .ud-unstyled-list > li:nth-child(3) > div > div",//Instructor Students
-    ".instructor--instructor__image-and-stats--6Nbsa > .ud-unstyled-list > li:nth-child(4) > div > div",//Instructor Courses
+    // ".instructor--instructor__image-and-stats--6Nbsa > .ud-unstyled-list > li:nth-child(1) > div > div",//Instructor Rating
+    // ".instructor--instructor__image-and-stats--6Nbsa > .ud-unstyled-list > li:nth-child(2) > div > div",//Instructor Reviews
+    // ".instructor--instructor__image-and-stats--6Nbsa > .ud-unstyled-list > li:nth-child(3) > div > div",//Instructor Students
+    // ".instructor--instructor__image-and-stats--6Nbsa > .ud-unstyled-list > li:nth-child(4) > div > div",//Instructor Courses
 ];
 
 //A class that checks every 100ms to see if the contents of the clipboard have changed
@@ -108,8 +108,7 @@ puppeteer.launch({
             console.log(contents)
             //Create a new array and insert all the data in proper order
             let contentsNormalized = [
-                `=HYPERLINK("${data}", "Link")`,
-                "Alpha Link",
+                `=HYPERLINK("${data}", "Alpha Link")`,
                 contents[0], //title
                 " ", //Udemy Level leave empty for now cause I can't scrape it from the landing page
                 hours,
@@ -120,10 +119,10 @@ puppeteer.launch({
                 contents[4].replace(" ratings", "").replace("(", "").replace(")", ""), //No of ratings
                 contents[5].replace(" students", ""), //No of students
                 contents[6].replace("Last updated ", ""), //Last updated
-                contents[7].replace(" Instructor Rating", ""), //Instructor Rating
-                contents[8].replace(" Reviews", ""), //Instructor Reviews
-                contents[9].replace(" Students", ""), //Instructor Students
-                contents[10].replace(" Courses", "") //Instructor Courses
+                // contents[7].replace(" Instructor Rating", ""), //Instructor Rating
+                // contents[8].replace(" Reviews", "").replace(" Review", ""), //Instructor Reviews
+                // contents[9].replace(" Students", ""), //Instructor Students
+                // contents[10].replace(" Courses", "").replace(" Course", "") //Instructor Courses
             ];
             //Excel considers new tab as next column, we join the text contents into a tabulated string
             contentsNormalized = contentsNormalized.join("\t");
